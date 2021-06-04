@@ -48,7 +48,15 @@ public class VendingMachine {
             System.out.println("(1) Display Vending Machine Items");
             System.out.println("(2) Purchase");
             System.out.println("(3) Exit");
-            choice = Integer.parseInt(customerInput.nextLine());
+
+            try {
+                choice = Integer.parseInt(customerInput.nextLine());
+            } catch (NumberFormatException e){
+                System.out.println("Please enter a 1, 2, or, 3 ");
+                choice = 0;
+
+            }
+
 
             if (choice == 1){
                 stock.displayAllItem();
@@ -60,16 +68,27 @@ public class VendingMachine {
                     System.out.println("(3) Finish Transaction");
                     System.out.println("Current Money Provided: $" + purchase.getBalance());
 
-                    choice = Integer.parseInt(customerInput.nextLine());
+                    try {
+                        choice = Integer.parseInt(customerInput.nextLine());
+                    } catch (NumberFormatException e){
+                        System.out.println("Please enter a 1, 2, or, 3 ");
+                        choice = 0;
+
+                    }
 
                     if (choice == 1){
                         System.out.println("Please enter your whole dollars:");
-                        double inputMoney = Double.parseDouble(customerInput.nextLine());
-                        String output = purchase.enterMoney(inputMoney);
-                        if (output.equals("This is not a whole dollar")){
-                            System.out.println("This is not a whole dollar");
-                        }else {
-                            write.println(sdf.format(new Date()) + " " + output);
+                        try {
+                            double inputMoney = Double.parseDouble(customerInput.nextLine());
+                            String output = purchase.enterMoney(inputMoney);
+                            if (output.equals("This is not a whole dollar")){
+                                System.out.println("This is not a whole dollar");
+                            }else {
+                                write.println(sdf.format(new Date()) + " " + output);
+                            }
+                        } catch (NumberFormatException e){
+                            System.out.println("That is not a whole number");
+
                         }
                     }else if (choice == 2){
                         stock.displayAllItem();
