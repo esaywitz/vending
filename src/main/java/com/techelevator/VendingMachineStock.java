@@ -83,11 +83,29 @@ public class VendingMachineStock {
            }
         }
     }
+    // method used for testing purposes
+    public String displayAllItems(){
+        String result = "";
+        for (Map.Entry<Item, Integer> entry : stock.entrySet()){
+            String position = entry.getKey().getPosition();
+            String name = entry.getKey().getName();
+            double price = entry.getKey().getPrice();
+            String type = entry.getKey().getType();
+            int quantity = entry.getValue();
+            if (quantity != 0) {
+                result += position + " " + name + " $" + price + " " + type + " " + quantity + "\n";
+            }else{
+                result += position + " " + name + " $" + price + " " + type + " " + "SOLD OUT" + "\n";
+            }
+        }
+        return result;
+    }
 
     public void reportWrite(PrintWriter pw){
         for (Map.Entry<Item, Integer> entry : stock.entrySet()){
             pw.println(entry.getKey().getName() + "|" + "0");
         }
+        pw.println(0);
         pw.flush();
     }
 

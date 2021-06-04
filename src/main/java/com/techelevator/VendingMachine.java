@@ -22,20 +22,50 @@ public class VendingMachine {
 
         FileWriter logFile = new FileWriter("log.txt", true);
         PrintWriter write = new PrintWriter(logFile);
-
+        SalesReport sp = new SalesReport();
         File newFile = new File("SalesReport.txt");
         Scanner saleScanner = new Scanner(newFile);
-        SalesReport sp = new SalesReport();
 
-        int count=1;
-        while(count < 17 && saleScanner.hasNextLine()) {
-            count++;
+
+
+
+        try {
+
+
+            int count = 1;
+            while (count < 17 && saleScanner.hasNextLine()) {
+                count++;
+                String line = saleScanner.nextLine();
+                String[] arrayLine = line.split("\\|");
+                sp.addItem(arrayLine[0], Integer.valueOf(arrayLine[1]));
+            }
             String line = saleScanner.nextLine();
-            String[] arrayLine = line.split("\\|");
-            sp.addItem(arrayLine[0], Integer.valueOf(arrayLine[1]));
+            sp.setCurrentSales(Double.valueOf(line));
+        } catch (Exception e){
+
+            // This will only occur if saleReport.txt is empty
+            // If it is empty then the map will be built using the
+            // base case, though if salesReport.txt is empty, it would mean that the data was wiped
+            // so the current sales would be reset to zero
+            FileWriter saleFile = new FileWriter("SalesReport.txt");
+            PrintWriter saleWrite = new PrintWriter(saleFile);
+            stock.reportWrite(saleWrite);
+
+            int count = 1;
+            while (count < 17 && saleScanner.hasNextLine()) {
+                count++;
+                String line = saleScanner.nextLine();
+                String[] arrayLine = line.split("\\|");
+                sp.addItem(arrayLine[0], Integer.valueOf(arrayLine[1]));
+            }
+            String line = saleScanner.nextLine();
+            sp.setCurrentSales(Double.valueOf(line));
+
+
+
+
+
         }
-        String line = saleScanner.nextLine();
-        sp.setCurrentSales(Double.valueOf(line));
 
 
 
@@ -128,7 +158,11 @@ public class VendingMachine {
                         }
                     }
                 }
-            }else if (choice != 3){
+            } else if (choice ==4){
+                FileWriter saleFile = new FileWriter("SalesReport"+ new Date() +".txt");
+                PrintWriter saleWrite = new PrintWriter(saleFile);
+                sp.displaySales(saleWrite);
+            } else if (choice != 3){
 
             }
         }
@@ -136,7 +170,7 @@ public class VendingMachine {
         FileWriter saleFile = new FileWriter("SalesReport.txt");
         PrintWriter saleWrite = new PrintWriter(saleFile);
         sp.displaySales(saleWrite);
-        sp.displayOnConsole();
+
     }
 
 
