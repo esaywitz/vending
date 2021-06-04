@@ -59,6 +59,7 @@ public class VendingMachine {
                     System.out.println("(2) Select Product");
                     System.out.println("(3) Finish Transaction");
                     System.out.println("Current Money Provided: $" + purchase.getBalance());
+
                     choice = Integer.parseInt(customerInput.nextLine());
 
                     if (choice == 1){
