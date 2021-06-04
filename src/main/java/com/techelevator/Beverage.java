@@ -2,7 +2,7 @@ package com.techelevator;
 
 public class Beverage extends Item{
 
-    private String type = "beverage";
+    private String type = "Drink";
 
     public Beverage(String position, String name, double price){
         super(position, name, price);

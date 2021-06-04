@@ -1,7 +1,7 @@
 package com.techelevator;
 
 public class Gum extends Item{
-    private String type = "gum";
+    private String type = "Gum";
 
     public Gum(String position, String name, double price){
         super(position, name, price);

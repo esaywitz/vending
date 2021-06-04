@@ -16,7 +16,7 @@ public class PurchaseItem {
         balance+=money;
         return "FEED MONEY: $" +  money + " $"  + balance;
     }
-    public String selectAProduct(Item item, double quantity){
+    public String selectAProduct(Item item){
 
 
         double price = item.getPrice();

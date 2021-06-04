@@ -2,7 +2,7 @@ package com.techelevator;
 
 public class Chip extends Item{
 
-    private String type = "chip";
+    private String type = "Chip";
 
     public Chip(String position, String name, double price){
         super(position, name, price);

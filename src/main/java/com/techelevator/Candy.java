@@ -2,7 +2,7 @@ package com.techelevator;
 
 public class Candy extends Item{
 
-    private String type = "candy";
+    private String type = "Candy";
 
     public Candy(String position, String name, double price){
         super(position, name, price);

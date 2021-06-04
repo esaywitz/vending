@@ -5,6 +5,7 @@ public class Item {
     private String name;
     private double price;
 
+
     public Item(String position, String name, double price){
         this.name = name;
         this.price = price;
@@ -25,5 +26,9 @@ public class Item {
 
     public String getPosition() {
         return position;
+    }
+
+    public String getType(){
+        return null;
     }
 }
