@@ -21,9 +21,11 @@ public class VendingMachine {
         FileWriter logFile = new FileWriter("log.txt",true);
         PrintWriter write = new PrintWriter(logFile);
 
-        FileWriter saleFile = new FileWriter("SalesReport.txt");
-        PrintWriter saleWrite = new PrintWriter(saleFile);
 
+
+        // FileWriter saleFile = new FileWriter("SalesReport.txt");
+        // PrintWriter saleWrite = new PrintWriter(saleFile);
+        // stock.reportWrite(saleWrite);
 
         File newFile = new File("SalesReport.txt");
         Scanner saleScanner = new Scanner(newFile);
@@ -37,6 +39,9 @@ public class VendingMachine {
         }
         String line = saleScanner.nextLine();
         sp.setCurrentSales(Double.valueOf(line));
+
+        FileWriter saleFile = new FileWriter("SalesReport.txt");
+        PrintWriter saleWrite = new PrintWriter(saleFile);
 
 
         int choice = 0;

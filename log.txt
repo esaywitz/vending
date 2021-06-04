@@ -1,4 +1,6 @@
-GIVE CHANGE: $0.0 $0.0
+FEED MONEY: $10.0 $10.0
+Potato Crisps A1 $10.0 $6.95
+GIVE CHANGE: $6.95 $0.0
 FEED MONEY: $10.0 $10.0
 Potato Crisps A1 $10.0 $6.95
 GIVE CHANGE: $6.95 $0.0
