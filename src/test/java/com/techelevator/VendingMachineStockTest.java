@@ -30,6 +30,7 @@ public class VendingMachineStockTest {
 
 
     }
+
     @Test
     public void getItem_returns_correct_Item_candy_from_Map(){
 
@@ -96,7 +97,21 @@ public class VendingMachineStockTest {
     }
 
     @Test
-    public void reportWrite(){
+    public void reportWriter(){
+        //Arrange
+        Item candy = new Item("1", "test", 4.0);
+        Item chip = new Item("2", "test2", 3.5);
+        stock.addAnItem(candy);
+        stock.addAnItem(chip);
+
+        //Act
+        String result = stock.reportWriter();
+        String expected = candy.getName() + "|" + "0" + "\n";
+        expected += chip.getName() + "|" + "0" + "\n";
+
+        //Assert
+        Assert.assertEquals(expected, result);
+
 
     }
 

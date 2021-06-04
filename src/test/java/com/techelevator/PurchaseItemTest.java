@@ -37,4 +37,11 @@ public class PurchaseItemTest {
 
         Assert.assertEquals(expected,result);
     }
+    @Test
+    public void enterMoney(){
+        double expectedBalance = 10;
+        item.enterMoney(10);
+        double result = item.getBalance();
+        Assert.assertEquals(expectedBalance, result);
+    }
 }

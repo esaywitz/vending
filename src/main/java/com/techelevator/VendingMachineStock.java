@@ -108,5 +108,12 @@ public class VendingMachineStock {
         pw.println(0);
         pw.flush();
     }
+    public String reportWriter(){
+        String result = "";
+        for (Map.Entry<Item, Integer> entry : stock.entrySet()){
+            result += entry.getKey().getName() + "|" + "0" + "\n";
+        }
+        return result;
+    }
 
 }
