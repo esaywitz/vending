@@ -40,8 +40,7 @@ public class VendingMachine {
         String line = saleScanner.nextLine();
         sp.setCurrentSales(Double.valueOf(line));
 
-        FileWriter saleFile = new FileWriter("SalesReport.txt");
-        PrintWriter saleWrite = new PrintWriter(saleFile);
+
 
 
         int choice = 0;
@@ -129,6 +128,8 @@ public class VendingMachine {
 
         }
         write.flush();
+        FileWriter saleFile = new FileWriter("SalesReport.txt");
+        PrintWriter saleWrite = new PrintWriter(saleFile);
         sp.displaySales(saleWrite);
         sp.displayOnConsole();
 
