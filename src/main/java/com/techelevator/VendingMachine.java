@@ -6,6 +6,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -18,18 +20,13 @@ public class VendingMachine {
         reStock(scanner, stock);
         Scanner customerInput = new Scanner(System.in);
 
-        FileWriter logFile = new FileWriter("log.txt",true);
+        FileWriter logFile = new FileWriter("log.txt", true);
         PrintWriter write = new PrintWriter(logFile);
-
-
-
-        // FileWriter saleFile = new FileWriter("SalesReport.txt");
-        // PrintWriter saleWrite = new PrintWriter(saleFile);
-        // stock.reportWrite(saleWrite);
 
         File newFile = new File("SalesReport.txt");
         Scanner saleScanner = new Scanner(newFile);
         SalesReport sp = new SalesReport();
+
         int count=1;
         while(count < 17 && saleScanner.hasNextLine()) {
             count++;
@@ -41,6 +38,9 @@ public class VendingMachine {
         sp.setCurrentSales(Double.valueOf(line));
 
 
+
+        SimpleDateFormat sdf = new SimpleDateFormat();
+        sdf.applyPattern("MM/dd/yyyy HH:mm:ss a");
 
 
         int choice = 0;
@@ -69,7 +69,7 @@ public class VendingMachine {
                         if (output.equals("This is not a whole dollar")){
                             System.out.println("This is not a whole dollar");
                         }else {
-                            write.println(output);
+                            write.println(sdf.format(new Date()) + " " + output);
                         }
                     }else if (choice == 2){
                         stock.displayAllItem();
@@ -86,7 +86,7 @@ public class VendingMachine {
                                         String productOutput = purchase.selectAProduct(item);
                                         sp.updateQuanity(item.getName());
                                         sp.updateCurrentSales(item.getPrice());
-                                        write.println(productOutput);
+                                        write.println(sdf.format(new Date()) + " " + productOutput);
                                         stock.changeStock(position);
                                     }else{
                                         System.out.println("Not enough money to buy this item");
@@ -97,44 +97,27 @@ public class VendingMachine {
                             }else{
                                 System.out.println("This position does not exist");
                             }
-                        }else{
-
                         }
-
                     }else if (choice == 3){
                         System.out.println("Are you sure you want to finish your transaction? Yes/No");
                         String intend = customerInput.nextLine();
                         if (intend.toLowerCase().equals("yes")){
                             String output = purchase.finishTransaction();
-                            write.println(output);
-
+                            write.println(sdf.format(new Date()) + " " + output);
                             choice = 0;
                             break;
-
-                        }else{
-
                         }
-
-
-                    }else{
-
                     }
-
                 }
             }else if (choice != 3){
 
-            }else{
-
             }
-
         }
         write.flush();
         FileWriter saleFile = new FileWriter("SalesReport.txt");
         PrintWriter saleWrite = new PrintWriter(saleFile);
         sp.displaySales(saleWrite);
         sp.displayOnConsole();
-
-
     }
 
 
