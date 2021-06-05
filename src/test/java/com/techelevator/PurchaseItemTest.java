@@ -42,6 +42,6 @@ public class PurchaseItemTest {
         double expectedBalance = 10;
         item.enterMoney(10);
         double result = item.getBalance();
-        Assert.assertEquals(expectedBalance, result);
+        Assert.assertEquals(expectedBalance, result,0.0);
     }
 }

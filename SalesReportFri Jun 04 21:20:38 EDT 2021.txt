@@ -1,4 +1,4 @@
-Stackers|0
+Stackers|2
 Cowtales|0
 Cola|0
 Heavy|0
@@ -7,11 +7,11 @@ Dr. Salt|0
 Little League Chew|0
 Wonka Bar|0
 Crunchie|0
-Moonpie|0
-Potato Crisps|0
+Moonpie|1
+Potato Crisps|1
 Triplemint|0
-Mountain Melter|0
-U-Chews|0
-Grain Waves|0
-Chiclets|0
-0.0
+Mountain Melter|2
+U-Chews|1
+Grain Waves|1
+Chiclets|1
+15.100000000000001

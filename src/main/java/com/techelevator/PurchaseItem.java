@@ -18,7 +18,6 @@ public class PurchaseItem {
     }
     public String selectAProduct(Item item){
 
-
         double price = item.getPrice();
         double tempbalance = balance;
         balance-=price;
